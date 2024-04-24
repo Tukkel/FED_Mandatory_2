@@ -1,9 +1,16 @@
-import React from 'react';
+import { Routes, Route } from "react-router-dom";
+import DefaultPage from "./pages/DefaultPage";
+import LoginPage from "./pages/LoginPage";
+import JobsPage from "./pages/JobsPage";
 
 function App() {
   return (
     <div>
-      <h1>Model Management</h1>
+      <Routes>
+        <Route path="/" element={<DefaultPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/jobs" element={<JobsPage />} />
+      </Routes>
     </div>
   );
 }
