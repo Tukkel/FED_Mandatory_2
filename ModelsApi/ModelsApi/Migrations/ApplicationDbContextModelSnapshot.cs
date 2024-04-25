@@ -17,10 +17,10 @@ namespace ModelsApi.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.2")
+                .HasAnnotation("ProductVersion", "6.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("ModelsApi.Models.Entities.EfAccount", b =>
                 {
@@ -28,7 +28,7 @@ namespace ModelsApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("EfAccountId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("EfAccountId"), 1L, 1);
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -57,7 +57,7 @@ namespace ModelsApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("EfExpenseId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("EfExpenseId"), 1L, 1);
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("date");
@@ -90,7 +90,7 @@ namespace ModelsApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("EfJobId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("EfJobId"), 1L, 1);
 
                     b.Property<string>("Comments")
                         .HasMaxLength(2000)
@@ -136,7 +136,7 @@ namespace ModelsApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("EfManagerId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("EfManagerId"), 1L, 1);
 
                     b.Property<long>("EfAccountId")
                         .HasColumnType("bigint");
@@ -170,7 +170,7 @@ namespace ModelsApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("EfModelId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("EfModelId"), 1L, 1);
 
                     b.Property<string>("AddresLine1")
                         .HasMaxLength(64)

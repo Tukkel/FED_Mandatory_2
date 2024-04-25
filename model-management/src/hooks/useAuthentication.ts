@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const LoginUrl = "https://localhost:7181/api/Account/login";
+const LoginUrl = "http://localhost:7181/api/Account/login";
 
 export interface UserCredentials {
   email: string;

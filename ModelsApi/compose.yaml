@@ -3,8 +3,8 @@ services:
     build:
       dockerfile: Dockerfile
     ports:
-      - "7181:8080"
-    depends_on:
+      - "7181:80"
+    depends_on: 
       - feddb
   feddb:
     image: mcr.microsoft.com/mssql/server
@@ -15,7 +15,7 @@ services:
       MSSQL_SA_PASSWORD: "YourStrong@Passw0rd"
       ACCEPT_EULA: "Y"
     ports:
-      - "4433:1433"
+    - "4433:1433"
 volumes:
   fed-assignment2:
     name: fed-assignment2-db

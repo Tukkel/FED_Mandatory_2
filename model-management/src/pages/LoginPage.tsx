@@ -27,8 +27,6 @@ function LoginPage() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("Email: " + event.currentTarget.email.value);
-    console.log("Password: " + event.currentTarget.password.value);
     setUserCredentials({
       email: event.currentTarget.email.value,
       password: event.currentTarget.password.value,
@@ -39,6 +37,7 @@ function LoginPage() {
     if (correctLogin) {
       navigate("/jobs");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [correctLogin]);
 
   return (
