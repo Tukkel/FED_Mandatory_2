@@ -22,7 +22,7 @@ function LoginPage() {
     email: "",
     password: "",
   });
-  const { correctLogin } = useValidateLogin(userCredentials);
+  const { correctLogin, manager } = useValidateLogin(userCredentials);
   const navigate = useNavigate();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -34,7 +34,9 @@ function LoginPage() {
   };
 
   useEffect(() => {
-    if (correctLogin) {
+    if (correctLogin && manager) {
+      navigate("/manageJobs");
+    } else if (correctLogin && !manager) {
       navigate("/jobs");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
