@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import Job from "../components/Job";
+import IJob from "../types/IJob";
 
 const JobsUrl = "http://localhost:7181/api/Jobs";
 
 export function useGetJobs() {
-  const [jobs, setJobs] = useState([]);
+  const [jobs, setJobs] = useState<IJob[]>([]);
   useEffect(() => {
     fetch(JobsUrl, {
       method: "GET",

@@ -27,7 +27,7 @@ export function useValidateLogin(credentials: UserCredentials) {
 
   const handleLogin = async (credentials: UserCredentials) => {
     try {
-      let response = await fetch(LoginUrl, {
+      const response = await fetch(LoginUrl, {
         method: "POST",
         body: JSON.stringify(credentials),
         headers: new Headers({
@@ -35,7 +35,7 @@ export function useValidateLogin(credentials: UserCredentials) {
         }),
       });
       if (response.ok) {
-        let token = await response.json();
+        const token = await response.json();
         localStorage.setItem("token", token.jwt);
         const decode: MyTokenPayload = jwtDecode(token.jwt);
         localStorage.setItem(
