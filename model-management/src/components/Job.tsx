@@ -8,12 +8,12 @@ interface JobProps {
 const Job: React.FC<JobProps> = ({ job }) => {
   return (
     <div>
-      <h2>{job.customer}</h2>
+      <h2 className={"text-2xl"}>{job.customer}</h2>
       <p>Start Date: {new Date(job.startDate).toLocaleDateString()}</p>
       <p>Days: {job.days}</p>
       <p>Location: {job.location}</p>
       <p>Comments: {job.comments}</p>
-      <h3>Job Models:</h3>
+      <h3 className={"text-xl"}>Job Models:</h3>
       {job.jobModels &&
         job.jobModels.map(
           (model: JobModel, modelIndex: number) =>

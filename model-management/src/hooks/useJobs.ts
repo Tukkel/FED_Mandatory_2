@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Job from "../components/Job";
 import IJob from "../types/IJob";
 
 const JobsUrl = "http://localhost:7181/api/Jobs";

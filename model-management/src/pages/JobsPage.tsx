@@ -7,7 +7,7 @@ function JobsPage() {
 
   return (
     <div>
-      <h1>Jobs Page</h1>
+      <h1 className={"text-3xl"}>Jobs Page</h1>
       {jobs && jobs.map((job, index) => <Job key={index} job={job} />)}
     </div>
   );
