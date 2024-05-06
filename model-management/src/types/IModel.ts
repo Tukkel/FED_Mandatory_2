@@ -3,8 +3,8 @@ export default interface IModel {
   lastName: string;
   email: string;
   phoneNo: string;
-  addressLine1: string;
-  addressLine2: string;
+  addresLine1: string;
+  addresLine2: string;
   zip: string;
   city: string;
   country: string;

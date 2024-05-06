@@ -6,9 +6,32 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import IModel from "../types/IModel";
+import { usePostModel } from "../hooks/useModels";
 
 export default function ModelFormDialog() {
   const [open, setOpen] = React.useState(false);
+  const [model, setModel] = React.useState<IModel>({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNo: "",
+    addresLine1: "",
+    addresLine2: "",
+    zip: "",
+    city: "",
+    country: "",
+    birthDate: "",
+    nationality: "",
+    height: 0,
+    shoeSize: 0,
+    hairColor: "",
+    eyeColor: "",
+    comments: "",
+    password: "",
+  });
+
+  const postModel = usePostModel(model);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -16,6 +39,31 @@ export default function ModelFormDialog() {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setModel({
+      firstName: event.currentTarget.firstName.value,
+      lastName: event.currentTarget.lastName.value,
+      email: event.currentTarget.email.value,
+      phoneNo: event.currentTarget.phoneNo.value,
+      addresLine1: event.currentTarget.addressLine1.value,
+      addresLine2: event.currentTarget.addressLine2.value,
+      zip: event.currentTarget.zip.value,
+      city: event.currentTarget.city.value,
+      country: event.currentTarget.country.value,
+      birthDate: event.currentTarget.birthDate.value,
+      nationality: event.currentTarget.nationality.value,
+      height: parseInt(event.currentTarget.height.value),
+      shoeSize: parseInt(event.currentTarget.shoeSize.value),
+      hairColor: event.currentTarget.hairColor.value,
+      eyeColor: event.currentTarget.eyeColor.value,
+      comments: event.currentTarget.comments.value,
+      password: event.currentTarget.password.value,
+    });
+    postModel;
+    handleClose();
   };
 
   return (
@@ -28,14 +76,7 @@ export default function ModelFormDialog() {
         onClose={handleClose}
         PaperProps={{
           component: "form",
-          onSubmit: (event: React.FormEvent<HTMLFormElement>) => {
-            event.preventDefault();
-            const formData = new FormData(event.currentTarget);
-            const formJson = Object.fromEntries((formData as any).entries());
-            const email = formJson.email;
-            console.log(email);
-            handleClose();
-          },
+          onSubmit: handleSubmit,
         }}
       >
         <DialogTitle>Add Model</DialogTitle>

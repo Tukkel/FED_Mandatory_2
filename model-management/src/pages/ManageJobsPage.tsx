@@ -2,6 +2,7 @@ import { useGetJobs } from "../hooks/useJobs";
 import IJob from "../types/IJob";
 import Job from "../components/Job";
 import ModelFormDialog from "../components/ModelFormDialog";
+import ManagerFormDialog from "../components/ManagerFormDialog";
 
 function ManageJobsPage() {
   const jobs: IJob[] = useGetJobs();
@@ -19,8 +20,13 @@ function ManageJobsPage() {
             ))}
         </div>
       </div>
-      <div className="absolute right-2">
-        <ModelFormDialog />
+      <div className="absolute right-0">
+        <div className="m-2">
+          <ModelFormDialog />
+        </div>
+        <div className="m-2">
+          <ManagerFormDialog />
+        </div>
       </div>
     </div>
   );
