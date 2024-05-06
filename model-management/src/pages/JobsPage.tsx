@@ -3,7 +3,7 @@ import IJob from "../types/IJob";
 import Job from "../components/Job";
 
 function JobsPage() {
-  const jobs: IJob[] = useGetJobs();
+  const jobs: IJob[] = useGetJobs(0);
 
   return (
     <div>

@@ -1,9 +1,9 @@
 import IModel from "../types/IModel";
 
-const ModelUrl = "http://localhost:7181/api/Models";
+const ModelsUrl = "http://localhost:7181/api/Models";
 
 export function usePostModel(model: IModel) {
-  fetch(ModelUrl, {
+  fetch(ModelsUrl, {
     method: "POST",
     body: JSON.stringify(model),
     credentials: "include",

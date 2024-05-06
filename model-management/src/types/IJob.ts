@@ -52,3 +52,11 @@ export default interface IJob {
   comments: string;
   jobModels: JobModel[];
 }
+
+export interface PostJob {
+  customer: string;
+  startDate: string;
+  days: number;
+  location: string;
+  comments: string;
+}
