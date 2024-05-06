@@ -1,5 +1,6 @@
 import React from "react";
-import IJob, { JobModel } from "../types/IJob";
+import IJob, { Model } from "../types/IJob";
+import Button from "@mui/material/Button";
 
 interface JobProps {
   job: IJob;
@@ -13,21 +14,16 @@ const Job: React.FC<JobProps> = ({ job }) => {
       <p>Days: {job.days}</p>
       <p>Location: {job.location}</p>
       <p>Comments: {job.comments}</p>
-      <h3 className={"text-xl"}>Job Models:</h3>
-      {job.jobModels &&
-        job.jobModels.map(
-          (model: JobModel, modelIndex: number) =>
-            model.model && (
-              <div key={modelIndex}>
-                <p>Job: {model.job}</p>
-                <p>Model First Name: {model.model.firstName}</p>
-                <p>Model Last Name: {model.model.lastName}</p>
-                {/* Add more fields as needed */}
-              </div>
-            )
-        )}
+      <h3 className={"text-xl"}>Models on this job:</h3>
+      {job.models &&
+        job.models.map((model, modelIndex) => (
+          <div key={modelIndex}>
+             <Button variant="contained"  onClick={() => alert(`First Name: ${model.firstName}\nLast Name: ${model.lastName}\nPhone Number: ${model.phoneNo}\nEmail: ${model.email}`)} >
+    {model.firstName} {model.lastName}
+    </Button>
+    </div>
+        ))}
     </div>
   );
 };
-
 export default Job;
