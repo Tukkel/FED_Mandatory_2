@@ -6,41 +6,11 @@ export interface Account {
 }
 
 export interface Model {
-  efModelId: number;
-  efAccountId: number;
-  account: Account;
   firstName: string;
   lastName: string;
   email: string;
   phoneNo: string;
-  addresLine1: string;
-  addresLine2: string;
-  zip: string;
-  city: string;
-  country: string;
-  birthDate: string;
-  nationality: string;
-  height: number;
-  shoeSize: number;
-  hairColor: string;
-  eyeColor: string;
-  comments: string;
-  jobModels: string[];
-  expenses: {
-    efExpenseId: number;
-    modelId: number;
-    jobId: number;
-    date: string;
-    text: string;
-    amount: number;
-  }[];
-}
-
-export interface JobModel {
-  efJobId: number;
-  job: string;
-  efModelId: number;
-  model: Model;
+  jobs: string[];
 }
 
 export default interface IJob {
@@ -50,5 +20,5 @@ export default interface IJob {
   days: number;
   location: string;
   comments: string;
-  jobModels: JobModel[];
+  models: Model[];
 }
