@@ -1,11 +1,11 @@
-import IModel from "../types/IModel";
+import IManager from "../types/IManager";
 
-const ModelUrl = "http://localhost:7181/api/Models";
+const ManagerUrl = "http://localhost:7181/api/Managers";
 
-export function usePostModel(model: IModel) {
-  fetch(ModelUrl, {
+export function usePostManager(manager: IManager) {
+  fetch(ManagerUrl, {
     method: "POST",
-    body: JSON.stringify(model),
+    body: JSON.stringify(manager),
     credentials: "include",
     headers: {
       Authorization: "Bearer " + localStorage.getItem("token"),
