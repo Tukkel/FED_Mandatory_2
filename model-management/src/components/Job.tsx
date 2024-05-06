@@ -1,5 +1,6 @@
 import React from "react";
 import IJob, { Model } from "../types/IJob";
+import Button from "@mui/material/Button";
 
 interface JobProps {
   job: IJob;
@@ -17,8 +18,9 @@ const Job: React.FC<JobProps> = ({ job }) => {
       {job.models &&
         job.models.map((model, modelIndex) => (
           <div key={modelIndex}>
-             <p className="bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-2 rounded"  onClick={() => alert(`First Name: ${model.firstName}\nLast Name: ${model.lastName}\nPhone Number: ${model.phoneNo}\nEmail: ${model.email}`)}>
-    {model.firstName} {model.lastName}</p>
+             <Button variant="contained"  onClick={() => alert(`First Name: ${model.firstName}\nLast Name: ${model.lastName}\nPhone Number: ${model.phoneNo}\nEmail: ${model.email}`)} >
+    {model.firstName} {model.lastName}
+    </Button>
     </div>
         ))}
     </div>
