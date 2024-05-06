@@ -4,7 +4,7 @@ import Job from "../components/Job";
 import ModelJobs from "../components/Modeljobs";
 
 function JobsPage() {
-  const jobs: IJob[] = useGetJobs();
+  const jobs: IJob[] = useGetJobs(0);
 
   return (
     <div>

@@ -24,3 +24,11 @@ export default interface IJob {
   models: Model[];
 
 }
+
+export interface PostJob {
+  customer: string;
+  startDate: string;
+  days: number;
+  location: string;
+  comments: string;
+}

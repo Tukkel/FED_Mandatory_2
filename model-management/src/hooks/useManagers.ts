@@ -1,9 +1,9 @@
 import IManager from "../types/IManager";
 
-const ManagerUrl = "http://localhost:7181/api/Managers";
+const ManagersUrl = "http://localhost:7181/api/Managers";
 
 export function usePostManager(manager: IManager) {
-  fetch(ManagerUrl, {
+  fetch(ManagersUrl, {
     method: "POST",
     body: JSON.stringify(manager),
     credentials: "include",

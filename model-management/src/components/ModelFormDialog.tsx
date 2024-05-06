@@ -134,6 +134,7 @@ export default function ModelFormDialog() {
             variant="standard"
           />
           <TextField
+            required
             margin="dense"
             id="addressLine2"
             name="addressLine2"
