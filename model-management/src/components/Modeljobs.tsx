@@ -8,6 +8,7 @@ interface JobProps {
 }
 
 const ModelJobs: React.FC<JobProps> = ({ job }) => {
+  console.log(job.jobId);
   return (
     <div className="mb-10">
       <h2 className={"text-2xl"}>{job.customer}</h2>
@@ -16,7 +17,7 @@ const ModelJobs: React.FC<JobProps> = ({ job }) => {
       <p>Location: {job.location}</p>
       <p>Comments: {job.comments}</p>
       <div className="m-2">
-          <ExpensesFormDialog jobId={job.efJobId}/>
+          <ExpensesFormDialog jobId={job.jobId}/>
         </div>
     </div>
   );

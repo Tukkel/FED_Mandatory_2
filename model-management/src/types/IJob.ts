@@ -15,7 +15,7 @@ export interface Model {
 
 
 export default interface IJob {
-  efJobId: number;
+  jobId: number;
   customer: string;
   startDate: string;
   days: number;
