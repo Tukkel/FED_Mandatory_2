@@ -13,6 +13,7 @@ export interface Model {
   jobs: string[];
 }
 
+
 export default interface IJob {
   efJobId: number;
   customer: string;
@@ -21,4 +22,5 @@ export default interface IJob {
   location: string;
   comments: string;
   models: Model[];
+
 }
