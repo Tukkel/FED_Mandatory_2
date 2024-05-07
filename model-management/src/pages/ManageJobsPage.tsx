@@ -15,28 +15,28 @@ function ManageJobsPage() {
   };
 
   return (
-    <div className="flex my-2">
-      <div className="flex-grow">
+    <div className="my-2">
+      <div className="flex justify-between">
         <h1 className="text-3xl text-center">Manage Jobs Page</h1>
-        <div className="flex flex-wrap justify-start">
-          {jobs &&
-            jobs.map((job, index) => (
-              <div className="m-2">
-                <Job key={index} job={job} />
-              </div>
-            ))}
+        <div className="flex">
+          <div className="m-2">
+            <ModelFormDialog />
+          </div>
+          <div className="m-2">
+            <ManagerFormDialog />
+          </div>
+          <div className="m-2">
+            <JobFormDialog onJobAdded={handleJobAdded} />
+          </div>
         </div>
       </div>
-      <div className="absolute right-0">
-        <div className="m-2">
-          <ModelFormDialog />
-        </div>
-        <div className="m-2">
-          <ManagerFormDialog />
-        </div>
-        <div className="m-2">
-          <JobFormDialog onJobAdded={handleJobAdded} />
-        </div>
+      <div className="flex flex-wrap justify-start">
+        {jobs &&
+          jobs.map((job, index) => (
+            <div className="m-2">
+              <Job key={index} job={job} />
+            </div>
+          ))}
       </div>
     </div>
   );
