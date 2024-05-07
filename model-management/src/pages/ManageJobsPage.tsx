@@ -10,7 +10,7 @@ function ManageJobsPage() {
   const [refreshKey, setRefreshKey] = useState(0);
   const jobs: IJob[] = useGetJobs(refreshKey);
 
-  const handleJobAdded = () => {
+  const handleJobChanged = () => {
     setRefreshKey((prevKey) => prevKey + 1);
   };
 
@@ -26,7 +26,7 @@ function ManageJobsPage() {
             <ManagerFormDialog />
           </div>
           <div className="m-2">
-            <JobFormDialog onJobAdded={handleJobAdded} />
+            <JobFormDialog onJobAdded={handleJobChanged} />
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@ function ManageJobsPage() {
         {jobs &&
           jobs.map((job, index) => (
             <div className="m-2">
-              <Job key={index} job={job} />
+              <Job key={index} job={job} onJobChanged={handleJobChanged} />
             </div>
           ))}
       </div>

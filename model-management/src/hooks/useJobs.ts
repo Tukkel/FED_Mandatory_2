@@ -39,6 +39,20 @@ export function usePostJob(job: PostJob) {
     .catch((error) => alert("Something bad happened: " + error));
 }
 
+export function usePutJob(job: PostJob, id: number) {
+  fetch(`${JobsUrl}/${id}`, {
+    method: "PUT",
+    body: JSON.stringify(job),
+    credentials: "include",
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json()) // Extract JSON data from response
+    .catch((error) => alert("Something bad happened: " + error));
+}
+
 export function usePostModeltoJob(modelId: number, jobId: number) {
   const url = `${JobsToModelUrl}?modelId=${modelId}&jobId=${jobId}`; // Add parameters to the URL
 
