@@ -9,7 +9,7 @@ function JobsPage() {
   return (
     <div>
       <h1 className={"text-3xl"}>Jobs Page</h1>
-      {ModelJobs && jobs.map((job, index) => <ModelJobs key={index} job={job}/>)}
+      {ModelJobs && jobs.map((job, index) => <ModelJobs key={index} job={job} />)}
     </div>
   );
 }

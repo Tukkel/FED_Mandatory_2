@@ -17,7 +17,7 @@ const ModelJobs: React.FC<JobProps> = ({ job }) => {
       <p>Location: {job.location}</p>
       <p>Comments: {job.comments}</p>
       <div className="m-2">
-          <ExpensesFormDialog jobId={job.jobId}/>
+          <ExpensesFormDialog jobId={job.jobId} modelId={} />
         </div>
     </div>
   );
