@@ -13,13 +13,14 @@ import { usePostExpenses } from "../hooks/useExpenses";
 
 interface ExpensesFormDialogProps {
     jobId: number;
+    modelId: number;
   }
 
-  export default function ExpensesFormDialog({ jobId }: ExpensesFormDialogProps) {
+  export default function ExpensesFormDialog({ jobId, modelId }: ExpensesFormDialogProps) {
   const [open, setOpen] = React.useState(false);
   const [Expense, setModel] = React.useState<IExpenses>({
     efExpenseId: 0,
-    modelId: 0,
+    modelId: modelId,
     jobId: jobId,
     date: "",
     text: "",
@@ -64,13 +65,6 @@ interface ExpensesFormDialogProps {
         <DialogTitle>Add Expens</DialogTitle>
         <DialogContent>
           <DialogContentText>Place details about expens</DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="modelId"
-            label="modelId"
-            type="number"
-            fullWidth />
             <TextField
             margin="dense"
             id="date"
