@@ -11,14 +11,6 @@ import { usePostManager } from "../hooks/useManagers";
 
 export default function ManagerFormDialog() {
   const [open, setOpen] = React.useState(false);
-  const [manager, setManager] = React.useState<IManager>({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
-
-  const postManager = usePostManager(manager);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -28,15 +20,15 @@ export default function ManagerFormDialog() {
     setOpen(false);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const useSubmitManager = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setManager({
+    const newManager: IManager = {
       firstName: event.currentTarget.firstName.value,
       lastName: event.currentTarget.lastName.value,
       email: event.currentTarget.email.value,
       password: event.currentTarget.password.value,
-    });
-    postManager;
+    };
+    usePostManager(newManager);
     handleClose();
   };
 
@@ -50,7 +42,7 @@ export default function ManagerFormDialog() {
         onClose={handleClose}
         PaperProps={{
           component: "form",
-          onSubmit: handleSubmit,
+          onSubmit: useSubmitManager,
         }}
       >
         <DialogTitle>Add Manager</DialogTitle>

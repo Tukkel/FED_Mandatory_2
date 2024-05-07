@@ -1,7 +1,5 @@
 import React from "react";
-import IJob, { Model } from "../types/IJob";
 import Button from "@mui/material/Button";
-
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -36,17 +34,17 @@ interface ExpensesFormDialogProps {
     setOpen(false);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const useSubmitExpens = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setModel({
-        efExpenseId: 0,
-        modelId: parseInt(event.currentTarget.modelId.value),
-        jobId: jobId,
-        date: event.currentTarget.date.value,
-        text: event.currentTarget.text.value,
-        amount: parseInt(event.currentTarget.amount.value),
-    });
-    postExpens;
+    const newExpenses: IExpenses = {
+      efExpenseId: 0,
+      modelId: parseInt(event.currentTarget.modelId.value),
+      jobId: jobId,
+      date: event.currentTarget.date.value,
+      text: event.currentTarget.text.value,
+      amount: parseInt(event.currentTarget.amount.value),
+    };
+    usePostExpenses(newExpenses);
     handleClose();
   };
   return (
@@ -59,7 +57,7 @@ interface ExpensesFormDialogProps {
         onClose={handleClose}
         PaperProps={{
           component: "form",
-          onSubmit: handleSubmit,
+          onSubmit: useSubmitExpens,
         }}
       >
         <DialogTitle>Add Expens</DialogTitle>
@@ -70,27 +68,30 @@ interface ExpensesFormDialogProps {
             id="date"
             label="dd-mm-åååå"
             type="date"
-            fullWidth />
-            <TextField
+            fullWidth
+          />
+          <TextField
             autoFocus
             margin="dense"
             id="text"
             label="text"
             type="text"
-            fullWidth />
-            <TextField
+            fullWidth
+          />
+          <TextField
             autoFocus
             margin="dense"
             id="amount"
             label="amount"
             type="number"
-            fullWidth />
+            fullWidth
+          />
         </DialogContent>
         <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <Button type="submit">Add</Button>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button type="submit">Add</Button>
         </DialogActions>
-        </Dialog>
-        </React.Fragment>
-        );
+      </Dialog>
+    </React.Fragment>
+  );
 }

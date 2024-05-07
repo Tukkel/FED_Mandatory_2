@@ -11,27 +11,6 @@ import { usePostModel } from "../hooks/useModels";
 
 export default function ModelFormDialog() {
   const [open, setOpen] = React.useState(false);
-  const [model, setModel] = React.useState<IModel>({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNo: "",
-    addresLine1: "",
-    addresLine2: "",
-    zip: "",
-    city: "",
-    country: "",
-    birthDate: "",
-    nationality: "",
-    height: 0,
-    shoeSize: 0,
-    hairColor: "",
-    eyeColor: "",
-    comments: "",
-    password: "",
-  });
-
-  const postModel = usePostModel(model);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -41,9 +20,9 @@ export default function ModelFormDialog() {
     setOpen(false);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const useSubmitModel = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setModel({
+    const newModel: IModel = {
       firstName: event.currentTarget.firstName.value,
       lastName: event.currentTarget.lastName.value,
       email: event.currentTarget.email.value,
@@ -61,8 +40,8 @@ export default function ModelFormDialog() {
       eyeColor: event.currentTarget.eyeColor.value,
       comments: event.currentTarget.comments.value,
       password: event.currentTarget.password.value,
-    });
-    postModel;
+    };
+    usePostModel(newModel);
     handleClose();
   };
 
@@ -76,7 +55,7 @@ export default function ModelFormDialog() {
         onClose={handleClose}
         PaperProps={{
           component: "form",
-          onSubmit: handleSubmit,
+          onSubmit: useSubmitModel,
         }}
       >
         <DialogTitle>Add Model</DialogTitle>
