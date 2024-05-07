@@ -22,3 +22,17 @@ export function useGetJobs() {
   }, []);
   return jobs;
 }
+
+export function usePatchJob(job: IJob) {
+  fetch(JobsUrl + "/" + job.efJobId, {
+    method: "PATCH",
+    body: JSON.stringify(job),
+    credentials: "include",
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json()) // Extract JSON data from response
+    .catch((error) => alert("Something bad happened: " + error));
+}
