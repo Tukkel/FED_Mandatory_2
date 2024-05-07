@@ -8,7 +8,6 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { PostJob } from "../types/IJob";
 import { usePostJob } from "../hooks/useJobs";
-import { useEffect } from "react";
 
 export default function JobFormDialog({
   onJobAdded,
@@ -16,19 +15,6 @@ export default function JobFormDialog({
   onJobAdded: () => void;
 }) {
   const [open, setOpen] = React.useState(false);
-  const [job, setJob] = React.useState<PostJob>({
-    customer: "",
-    startDate: "",
-    days: 0,
-    location: "",
-    comments: "",
-  });
-
-  const postJob = usePostJob(job);
-
-  useEffect(() => {
-    postJob;
-  }, [job]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -38,15 +24,16 @@ export default function JobFormDialog({
     setOpen(false);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const useSubmitJob = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setJob({
+    const newJob: PostJob = {
       customer: event.currentTarget.customer.value,
       startDate: event.currentTarget.startDate.value,
       days: parseInt(event.currentTarget.days.value),
       location: event.currentTarget.location.value,
       comments: event.currentTarget.comments.value,
-    });
+    };
+    usePostJob(newJob);
     handleClose();
     onJobAdded();
   };
@@ -61,7 +48,7 @@ export default function JobFormDialog({
         onClose={handleClose}
         PaperProps={{
           component: "form",
-          onSubmit: handleSubmit,
+          onSubmit: useSubmitJob,
         }}
       >
         <DialogTitle>Add Job</DialogTitle>

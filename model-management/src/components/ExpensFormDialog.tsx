@@ -1,7 +1,5 @@
 import React from "react";
-import IJob, { Model } from "../types/IJob";
 import Button from "@mui/material/Button";
-
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -12,20 +10,11 @@ import IExpenses from "../types/IExpenses";
 import { usePostExpenses } from "../hooks/useExpenses";
 
 interface ExpensesFormDialogProps {
-    jobId: number;
-  }
+  jobId: number;
+}
 
-  export default function ExpensesFormDialog({ jobId }: ExpensesFormDialogProps) {
+export default function ExpensesFormDialog({ jobId }: ExpensesFormDialogProps) {
   const [open, setOpen] = React.useState(false);
-  const [Expense, setModel] = React.useState<IExpenses>({
-    efExpenseId: 0,
-    modelId: 0,
-    jobId: jobId,
-    date: "",
-    text: "",
-    amount: 0,
-  });
-  const postExpens = usePostExpenses(Expense);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -35,17 +24,17 @@ interface ExpensesFormDialogProps {
     setOpen(false);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const useSubmitExpens = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setModel({
-        efExpenseId: 0,
-        modelId: parseInt(event.currentTarget.modelId.value),
-        jobId: jobId,
-        date: event.currentTarget.date.value,
-        text: event.currentTarget.text.value,
-        amount: parseInt(event.currentTarget.amount.value),
-    });
-    postExpens;
+    const newExpenses: IExpenses = {
+      efExpenseId: 0,
+      modelId: parseInt(event.currentTarget.modelId.value),
+      jobId: jobId,
+      date: event.currentTarget.date.value,
+      text: event.currentTarget.text.value,
+      amount: parseInt(event.currentTarget.amount.value),
+    };
+    usePostExpenses(newExpenses);
     handleClose();
   };
   return (
@@ -58,7 +47,7 @@ interface ExpensesFormDialogProps {
         onClose={handleClose}
         PaperProps={{
           component: "form",
-          onSubmit: handleSubmit,
+          onSubmit: useSubmitExpens,
         }}
       >
         <DialogTitle>Add Expens</DialogTitle>
@@ -70,33 +59,37 @@ interface ExpensesFormDialogProps {
             id="modelId"
             label="modelId"
             type="number"
-            fullWidth />
-            <TextField
+            fullWidth
+          />
+          <TextField
             margin="dense"
             id="date"
             label="dd-mm-åååå"
             type="date"
-            fullWidth />
-            <TextField
+            fullWidth
+          />
+          <TextField
             autoFocus
             margin="dense"
             id="text"
             label="text"
             type="text"
-            fullWidth />
-            <TextField
+            fullWidth
+          />
+          <TextField
             autoFocus
             margin="dense"
             id="amount"
             label="amount"
             type="number"
-            fullWidth />
+            fullWidth
+          />
         </DialogContent>
         <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <Button type="submit">Add</Button>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button type="submit">Add</Button>
         </DialogActions>
-        </Dialog>
-        </React.Fragment>
-        );
+      </Dialog>
+    </React.Fragment>
+  );
 }
