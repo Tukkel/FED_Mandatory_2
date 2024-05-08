@@ -39,7 +39,7 @@ const Job: React.FC<JobProps> = ({ job, onJobChanged }) => {
             </div>
           ))}
           <div className="p-2">
-          <JobAddModel jobId={job.jobId} onJobChanged={onJobChanged}/>
+          <JobAddModel job={job} onJobChanged={onJobChanged}/>
           </div>
       </CardContent>
     </Card>
