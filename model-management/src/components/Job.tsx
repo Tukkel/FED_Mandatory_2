@@ -3,7 +3,8 @@ import IJob from "../types/IJob";
 import Button from "@mui/material/Button";
 import ChangeJobFormDialog from "./ChangeJobFormDialog";
 import ModelAddDialog from "./ModelAddDialog";
-import ModelsOnJob from "./JobAddModel";
+import ModelsOnJob from "./JobAddModelForm";
+import JobAddModel from "./JobAddModelForm";
 
 interface JobProps {
   job: IJob;
@@ -19,11 +20,8 @@ const Job: React.FC<JobProps> = ({ job, onJobChanged }) => {
       <p>Start Date: {new Date(job.startDate).toLocaleDateString()}</p>
       <p>Days: {job.days}</p>
       <p>Location: {job.location}</p>
-      <p>Comments: {job.comments}</p>
-      <div className="m-2">
-        <ModelAddDialog jobId={job.jobId}/>
-      </div>
-      <h3 className={"text-xl"}>Models on this job:</h3>
+      <p>Comments: {job.comments}</p>¨
+      <p className={""}>Models on this job:</p>
       {job.models &&
         job.models.map((model, modelIndex) => (
           <div key={modelIndex}>
@@ -39,6 +37,9 @@ const Job: React.FC<JobProps> = ({ job, onJobChanged }) => {
             </Button>
           </div>
         ))}
+        <div className="p-2">
+        <JobAddModel jobId={job.jobId}/>
+        </div>
     </div>
   );
 };

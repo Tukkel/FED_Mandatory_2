@@ -1,4 +1,5 @@
-import IModel from "../types/IModel";
+import { Model } from "../types/IJob";
+import {EfModel, IModel} from "../types/IModel";
 import { useEffect, useState } from "react";
 
 const ModelUrl = "http://localhost:7181/api/Models";
@@ -19,7 +20,7 @@ export function usePostModel(model: IModel) {
 
 
 export function useGetModels() {
-    const [models, setModels] = useState<IModel[]>([]);
+    const [models, setModels] = useState<EfModel[]>([]);
     useEffect(() => {
       fetch(ModelUrl, {
         method: "GET",
@@ -37,3 +38,19 @@ export function useGetModels() {
     }, []);
     return models;
   }
+
+/*   export function usePutModel(id: number, model: Model ) {
+    fetch(`${ModelUrl}/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(model),
+      credentials: "include",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json()) // Extract JSON data from response
+      .catch((error) => alert("Something bad happened: " + error));
+  } */
+
+

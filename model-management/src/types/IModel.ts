@@ -1,4 +1,6 @@
-export default interface IModel {
+import IJob from "./IJob";
+
+export interface IModel {
   firstName: string;
   lastName: string;
   email: string;
@@ -16,4 +18,12 @@ export default interface IModel {
   eyeColor: string;
   comments: string;
   password: string;
+}
+
+export interface EfModel {
+  EfModelId: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  jobModels: IJob[];
 }

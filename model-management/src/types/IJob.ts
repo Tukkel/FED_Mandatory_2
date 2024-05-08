@@ -10,7 +10,6 @@ export interface Model {
   lastName: string;
   email: string;
   phoneNo: string;
-  jobs: string[];
 }
 
 
