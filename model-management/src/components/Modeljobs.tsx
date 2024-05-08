@@ -16,9 +16,12 @@ const ModelJobs: React.FC<JobProps> = ({ job }) => {
       <p>Days: {job.days}</p>
       <p>Location: {job.location}</p>
       <p>Comments: {job.comments}</p>
-      <div className="m-2">
-          <ExpensesFormDialog jobId={job.jobId} modelId={Number(localStorage.getItem("modelId"))} />
-        </div>
+      <div className="my-2">
+        <ExpensesFormDialog
+          jobId={job.jobId}
+          modelId={Number(localStorage.getItem("modelId"))}
+        />
+      </div>
     </div>
   );
 };
