@@ -8,7 +8,6 @@ interface JobProps {
 }
 
 const ModelJobs: React.FC<JobProps> = ({ job }) => {
-  console.log(job.jobId);
   return (
     <div className="mb-10">
       <h2 className={"text-2xl"}>{job.customer}</h2>

@@ -43,7 +43,7 @@ export default function ExpensesFormDialog({
   return (
     <React.Fragment>
       <Button variant="contained" color="success" onClick={handleClickOpen}>
-        Add Expens
+        Add Expense
       </Button>
       <Dialog
         open={open}
