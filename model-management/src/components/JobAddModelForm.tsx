@@ -38,7 +38,6 @@ export default function JobAddModelForm({
     model: EfModel
   ) => {
     event.preventDefault();
-    console.log(model);
     if (event.target.checked) {
       postModelToJob(model.efModelId, job.jobId);
     } else {
