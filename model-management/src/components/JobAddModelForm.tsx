@@ -41,8 +41,7 @@ export default function JobAddModelForm( {job, onJobChanged,}: {job: IJob, onJob
 
     return(
         <React.Fragment>
-      <Button variant="contained" onClick={handleClickOpen}>
-        Change Models
+      <Button variant="contained" onClick={handleClickOpen} sx={{ backgroundColor: '#ffd700', '&:hover': { backgroundColor: '#cca300' } }}>  Change Models
       </Button>
       <Dialog
         open={open}

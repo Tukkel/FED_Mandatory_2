@@ -6,6 +6,8 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import Modal from '@mui/material/Modal';
 import { PostJob } from "../types/IJob";
 import { usePostJob } from "../hooks/useJobs";
 
@@ -15,6 +17,8 @@ export default function JobFormDialog({
   onJobAdded: () => void;
 }) {
   const [open, setOpen] = React.useState(false);
+  const [submitted, setSubmitted] = React.useState(false); // New state variable for submission status
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -36,13 +40,24 @@ export default function JobFormDialog({
     usePostJob(newJob);
     handleClose();
     onJobAdded();
+    setSubmitted(true); // Set submitted to true when job is added
+    setTimeout(() => setSubmitted(false), 500); // Reset submitted after 2 seconds
+  
   };
 
   return (
     <React.Fragment>
-      <Button variant="contained" onClick={handleClickOpen}>
+      <Button variant="contained" color="success" onClick={handleClickOpen}>
         Add Job
       </Button>
+      <Modal
+        open={submitted}
+        onClose={() => setSubmitted(false)}
+        aria-labelledby="submission-success-modal"
+        aria-describedby="indicates-successful-job-submission"
+      >
+        <CheckCircleIcon sx={{ fontSize: 300, position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', color: '#00b200' }} />
+      </Modal>
       <Dialog
         open={open}
         onClose={handleClose}
