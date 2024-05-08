@@ -28,7 +28,7 @@ export default function ExpensesFormDialog({
     setOpen(false);
   };
 
-  const useSubmitExpens = (event: React.FormEvent<HTMLFormElement>) => {
+  const useSubmitExpense = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const newExpenses: IExpenses = {
       modelId: modelId,
@@ -50,12 +50,12 @@ export default function ExpensesFormDialog({
         onClose={handleClose}
         PaperProps={{
           component: "form",
-          onSubmit: useSubmitExpens,
+          onSubmit: useSubmitExpense,
         }}
       >
-        <DialogTitle>Add Expens</DialogTitle>
+        <DialogTitle>Add Expense</DialogTitle>
         <DialogContent>
-          <DialogContentText>Place details about expens</DialogContentText>
+          <DialogContentText>Place details about expense</DialogContentText>
           <TextField
             autoFocus
             margin="dense"
