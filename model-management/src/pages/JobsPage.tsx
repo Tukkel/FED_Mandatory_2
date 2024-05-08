@@ -9,7 +9,11 @@ function JobsPage() {
   return (
     <div>
       <h1 className={"text-3xl"}>Jobs Page</h1>
-      {ModelJobs && jobs.map((job, index) => <ModelJobs key={index} job={job} />)}
+      <div className="flex flex-wrap justify-start gap-6">
+        {
+          ModelJobs && jobs.map((job, index) => <ModelJobs key={index} job={job} />)
+          }
+      </div>
     </div>
   );
 }

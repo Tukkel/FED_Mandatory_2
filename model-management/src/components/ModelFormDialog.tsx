@@ -53,7 +53,7 @@ export default function ModelFormDialog() {
 
   return (
     <React.Fragment>
-      <Button variant="contained" onClick={handleClickOpen}>
+      <Button variant="contained" color="success" onClick={handleClickOpen}>
         Add Model
       </Button>
       <Modal

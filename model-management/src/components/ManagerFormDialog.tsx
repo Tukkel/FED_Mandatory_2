@@ -40,7 +40,7 @@ export default function ManagerFormDialog() {
 
   return (
     <React.Fragment>
-      <Button variant="contained" onClick={handleClickOpen}>
+      <Button variant="contained" color="success" onClick={handleClickOpen}>
         Add Manager
       </Button>
       <Modal
