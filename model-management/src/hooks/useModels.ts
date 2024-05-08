@@ -14,7 +14,6 @@ export function usePostModel(model: IModel) {
       "Content-Type": "application/json",
     },
   })
-    .then((response) => response.json()) // Extract JSON data from response
     .catch((error) => alert("Something bad happened: " + error));
 }
 
@@ -38,19 +37,5 @@ export function useGetModels() {
     }, []);
     return models;
   }
-
-/*   export function usePutModel(id: number, model: Model ) {
-    fetch(`${ModelUrl}/${id}`, {
-      method: "PUT",
-      body: JSON.stringify(model),
-      credentials: "include",
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("token"),
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json()) // Extract JSON data from response
-      .catch((error) => alert("Something bad happened: " + error));
-  } */
 
 

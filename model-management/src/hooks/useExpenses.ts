@@ -12,6 +12,5 @@ export function usePostExpenses(Expense: IExpenses) {
       "Content-Type": "application/json",
     },
   })
-    .then((response) => response.json()) // Extract JSON data from response
     .catch((error) => alert("Something bad happened: " + error));
 }
