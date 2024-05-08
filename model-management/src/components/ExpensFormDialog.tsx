@@ -57,14 +57,15 @@ export default function ExpensesFormDialog({
         <DialogContent>
           <DialogContentText>Place details about expens</DialogContentText>
           <TextField
+            autoFocus
             margin="dense"
             id="date"
             label="dd-mm-åååå"
             type="date"
             fullWidth
+            defaultValue="2020-01-01"
           />
           <TextField
-            autoFocus
             margin="dense"
             id="text"
             label="text"
@@ -72,7 +73,6 @@ export default function ExpensesFormDialog({
             fullWidth
           />
           <TextField
-            autoFocus
             margin="dense"
             id="amount"
             label="amount"

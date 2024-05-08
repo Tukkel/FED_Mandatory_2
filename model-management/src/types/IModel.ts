@@ -17,3 +17,5 @@ export default interface IModel {
   comments: string;
   password: string;
 }
+
+

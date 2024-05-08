@@ -1,10 +1,3 @@
-export interface Account {
-  efAccountId: number;
-  email: string;
-  pwHash: string;
-  isManager: boolean;
-}
-
 export interface Model {
   firstName: string;
   lastName: string;
@@ -12,7 +5,6 @@ export interface Model {
   phoneNo: string;
   jobs: string[];
 }
-
 
 export default interface IJob {
   jobId: number;
@@ -22,7 +14,6 @@ export default interface IJob {
   location: string;
   comments: string;
   models: Model[];
-
 }
 
 export interface PostJob {

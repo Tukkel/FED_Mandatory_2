@@ -7,7 +7,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import IJob, { PostJob } from "../types/IJob";
-import { usePutJob } from "../hooks/useJobs";
+import { usePutJob, useDeleteJob } from "../hooks/useJobs";
 
 export default function ChangeJobFormDialog({
   onJobChanged,
@@ -36,6 +36,12 @@ export default function ChangeJobFormDialog({
       comments: event.currentTarget.comments.value,
     };
     usePutJob(newJob, job.jobId);
+    handleClose();
+    onJobChanged();
+  };
+
+  const useRemoveJob = () => {
+    useDeleteJob(job.jobId);
     handleClose();
     onJobChanged();
   };
@@ -79,7 +85,7 @@ export default function ChangeJobFormDialog({
             type="date"
             fullWidth
             variant="standard"
-            defaultValue={job.startDate}
+            defaultValue={new Date(job.startDate).toISOString().split("T")[0]}
           />
           <TextField
             required
@@ -118,6 +124,9 @@ export default function ChangeJobFormDialog({
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
           <Button type="submit">Change</Button>
+          <Button onClick={useRemoveJob} variant="contained" color="error">
+            Delete
+          </Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>
