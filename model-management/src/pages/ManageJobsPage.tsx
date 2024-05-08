@@ -11,13 +11,15 @@ function ManageJobsPage() {
   const jobs: IJob[] = useGetJobs(refreshKey);
 
   const handleJobChanged = () => {
-    setRefreshKey((prevKey) => prevKey + 1);
+    setTimeout(() => {
+      setRefreshKey((prevKey) => prevKey + 1);
+    }, 1000);
   };
 
   return (
-    <div className="my-2">
+    <div>
       <div className="flex justify-between">
-        <h1 className="text-3xl text-center">Manage Jobs Page</h1>
+        <h1 className="text-3xl text-center m-2">Manage Jobs Page</h1>
         <div className="flex">
           <div className="m-2">
             <ModelFormDialog />

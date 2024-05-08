@@ -2,7 +2,7 @@ import React from "react";
 import IJob from "../types/IJob";
 import Button from "@mui/material/Button";
 import ChangeJobFormDialog from "./ChangeJobFormDialog";
-import JobAddModel from "./JobAddModelForm";
+import JobAddModelForm from "./JobAddModelForm";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 
@@ -13,7 +13,7 @@ interface JobProps {
 
 const Job: React.FC<JobProps> = ({ job, onJobChanged }) => {
   return (
-    <Card sx={{ backgroundColor: '#d3d3d3'  }}>
+    <Card sx={{ backgroundColor: "#d3d3d3" }}>
       <CardContent>
         <div>
           <ChangeJobFormDialog onJobChanged={onJobChanged} job={job} />
@@ -25,7 +25,7 @@ const Job: React.FC<JobProps> = ({ job, onJobChanged }) => {
         <p className={""}>Models on this job:</p>
         {job.models &&
           job.models.map((model, modelIndex) => (
-            <div key={modelIndex}>
+            <div key={modelIndex} className="my-2">
               <Button
                 variant="contained"
                 onClick={() =>
@@ -38,9 +38,9 @@ const Job: React.FC<JobProps> = ({ job, onJobChanged }) => {
               </Button>
             </div>
           ))}
-          <div className="p-2">
-          <JobAddModel job={job} onJobChanged={onJobChanged}/>
-          </div>
+        <div className="my-2">
+          <JobAddModelForm job={job} onJobChanged={onJobChanged} />
+        </div>
       </CardContent>
     </Card>
   );

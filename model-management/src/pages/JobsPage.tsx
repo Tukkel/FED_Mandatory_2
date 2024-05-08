@@ -1,6 +1,5 @@
 import { useGetJobs } from "../hooks/useJobs";
 import IJob from "../types/IJob";
-import Job from "../components/Job";
 import ModelJobs from "../components/Modeljobs";
 
 function JobsPage() {
