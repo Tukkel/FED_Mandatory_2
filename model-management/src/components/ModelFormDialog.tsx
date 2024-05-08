@@ -6,11 +6,14 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import Modal from '@mui/material/Modal';
 import IModel from "../types/IModel";
 import { usePostModel } from "../hooks/useModels";
 
 export default function ModelFormDialog() {
   const [open, setOpen] = React.useState(false);
+  const [submitted, setSubmitted] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -43,6 +46,9 @@ export default function ModelFormDialog() {
     };
     usePostModel(newModel);
     handleClose();
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 500); // Display checkmark for 2 seconds
+ 
   };
 
   return (
@@ -50,6 +56,14 @@ export default function ModelFormDialog() {
       <Button variant="contained" onClick={handleClickOpen}>
         Add Model
       </Button>
+      <Modal
+        open={submitted}
+        onClose={() => setSubmitted(false)}
+        aria-labelledby="submission-success-modal"
+        aria-describedby="indicates-successful-model-submission"
+      >
+        <CheckCircleIcon sx={{ fontSize: 300, position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', color: '#00b200' }} />
+      </Modal>
       <Dialog
         open={open}
         onClose={handleClose}
