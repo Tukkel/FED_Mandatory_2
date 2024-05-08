@@ -1,3 +1,16 @@
+import React from "react";
+import IJob from "../types/IJob";
+import Button from "@mui/material/Button";
+import ChangeJobFormDialog from "./ChangeJobFormDialog";
+import JobAddModelForm from "./JobAddModelForm";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+
+interface JobProps {
+  job: IJob;
+  onJobChanged: () => void;
+}
+
 const Job: React.FC<JobProps> = ({ job, onJobChanged }) => {
   return (
     <Card sx={{ backgroundColor: "#d3d3d3" }}>
