@@ -1,37 +1,45 @@
 import React from "react";
-import IJob, { JobModel } from "../types/IJob";
-import { Dialog } from "@mui/material";
-import ModelsOnJob from "./ModelsOnJob";
+import IJob from "../types/IJob";
+import Button from "@mui/material/Button";
+import ChangeJobFormDialog from "./ChangeJobFormDialog";
+import ModelAddDialog from "./ModelAddDialog";
+import ModelsOnJob from "./JobAddModel";
 
 interface JobProps {
   job: IJob;
+  onJobChanged: () => void;
 }
 
-const Job: React.FC<JobProps> = ({ job }) => {
+const Job: React.FC<JobProps> = ({ job, onJobChanged }) => {
   return (
     <div>
-      <h2 className={"text-2xl"}>{job.customer}</h2>
+      <div>
+        <ChangeJobFormDialog onJobChanged={onJobChanged} job={job} />
+      </div>
       <p>Start Date: {new Date(job.startDate).toLocaleDateString()}</p>
       <p>Days: {job.days}</p>
       <p>Location: {job.location}</p>
       <p>Comments: {job.comments}</p>
-      <ModelsOnJob></ModelsOnJob>
-
+      <div className="m-2">
+        <ModelAddDialog jobId={job.jobId}/>
+      </div>
+      <h3 className={"text-xl"}>Models on this job:</h3>
+      {job.models &&
+        job.models.map((model, modelIndex) => (
+          <div key={modelIndex}>
+            <Button
+              variant="contained"
+              onClick={() =>
+                alert(
+                  `First Name: ${model.firstName}\nLast Name: ${model.lastName}\nPhone Number: ${model.phoneNo}\nEmail: ${model.email}`
+                )
+              }
+            >
+              {model.firstName} {model.lastName}
+            </Button>
+          </div>
+        ))}
     </div>
   );
 };
-/* 
-{job.jobModels &&
-  job.jobModels.map(
-    (model: JobModel, modelIndex: number) =>
-      model.model && (
-        <div key={modelIndex}>
-          <p>Job: {model.job}</p>
-          <p>Model First Name: {model.model.firstName}</p>
-          <p>Model Last Name: {model.model.lastName}</p>
-          {/* Add more fields as needed }
-        /*</div>
-      )
-  )} */
-
 export default Job;

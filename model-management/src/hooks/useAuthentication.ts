@@ -44,6 +44,7 @@ export function useValidateLogin(credentials: UserCredentials) {
             "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
           ] || ""
         );
+        localStorage.setItem("modelId", decode["ModelId"] || "");
         if (localStorage.getItem("role") === "Manager") {
           setManager(true);
         }
