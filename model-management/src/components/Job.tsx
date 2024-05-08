@@ -2,8 +2,6 @@ import React from "react";
 import IJob from "../types/IJob";
 import Button from "@mui/material/Button";
 import ChangeJobFormDialog from "./ChangeJobFormDialog";
-import ModelAddDialog from "./ModelAddDialog";
-import ModelsOnJob from "./JobAddModelForm";
 import JobAddModel from "./JobAddModelForm";
 
 interface JobProps {
@@ -38,7 +36,7 @@ const Job: React.FC<JobProps> = ({ job, onJobChanged }) => {
           </div>
         ))}
         <div className="p-2">
-        <JobAddModel jobId={job.jobId} onJobChanged={onJobChanged}/>
+        <JobAddModel job={job} onJobChanged={onJobChanged}/>
         </div>
     </div>
   );

@@ -8,19 +8,17 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useGetModels } from "../hooks/useModels";
-import { usePostModeltoJob } from "../hooks/useJobs";
+import { usePostModelToJob, useDeleteModelFromJob } from "../hooks/useJobs";
 import { EfModel } from "../types/IModel";
+import IJob from "../types/IJob";
 
 
-interface JobAddModelProps {
-    jobId: number;
-  }
-
-
-export default function JobAddModelForm( {jobId, onJobChanged,}: {jobId: number, onJobChanged: ()=>void}){
+export default function JobAddModelForm( {job, onJobChanged,}: {job: IJob, onJobChanged: ()=>void}){
 
     const [open, setOpen]=React.useState(false);
     const models: EfModel[] = useGetModels();
+    const postModelToJob = usePostModelToJob();
+    const deleteModelFromJob = useDeleteModelFromJob();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -28,13 +26,18 @@ export default function JobAddModelForm( {jobId, onJobChanged,}: {jobId: number,
     
       const handleClose = () => {
         setOpen(false);
+        onJobChanged();
       };
 
-    const useAddModelToJob = (model: EfModel, jobId: number) => {
-        usePostModeltoJob(model.EfModelId, jobId);
-    }
-
-
+    const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>, model: EfModel) => {
+        event.preventDefault();
+        console.log(model);
+        if (event.target.checked) {
+            postModelToJob(model.efModelId, job.jobId);
+        } else {
+            deleteModelFromJob(model.efModelId, job.jobId);
+        }
+    };
 
     return(
         <React.Fragment>
@@ -53,10 +56,16 @@ export default function JobAddModelForm( {jobId, onJobChanged,}: {jobId: number,
             <DialogContentText>
                 Choose what models should be on the job.
             </DialogContentText>
-            {models.map((model, index) => (
+{models.map((model, index) => (
     <FormControlLabel
         key={index}
-        control={<Checkbox value={model.EfModelId} />}
+        control={
+            <Checkbox 
+                value={model.efModelId} 
+                defaultChecked={job.models.some(jobModel => jobModel.email === model.email)}
+                onChange={(event) => handleCheckboxChange(event, model)}
+            />
+        }
         label={`${model.firstName} ${model.lastName}`}
     />
 ))}

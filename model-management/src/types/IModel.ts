@@ -19,7 +19,7 @@ export interface IModel {
 }
 
 export interface EfModel {
-  EfModelId: number;
+  efModelId: number;
   firstName: string;
   lastName: string;
   email: string;
