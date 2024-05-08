@@ -1,17 +1,9 @@
-export interface Account {
-  efAccountId: number;
-  email: string;
-  pwHash: string;
-  isManager: boolean;
-}
-
 export interface Model {
   firstName: string;
   lastName: string;
   email: string;
   phoneNo: string;
 }
-
 
 export default interface IJob {
   jobId: number;
@@ -21,7 +13,6 @@ export default interface IJob {
   location: string;
   comments: string;
   models: Model[];
-
 }
 
 export interface PostJob {

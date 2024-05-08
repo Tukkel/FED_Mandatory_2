@@ -1,5 +1,3 @@
-import IJob from "./IJob";
-
 export interface IModel {
   firstName: string;
   lastName: string;
@@ -25,5 +23,4 @@ export interface EfModel {
   firstName: string;
   lastName: string;
   email: string;
-  jobModels: IJob[];
 }
