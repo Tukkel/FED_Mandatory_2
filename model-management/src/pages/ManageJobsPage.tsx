@@ -30,7 +30,7 @@ function ManageJobsPage() {
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap justify-start">
+      <div className="flex flex-wrap justify-start gap-4">
         {jobs &&
           jobs.map((job, index) => (
             <div className="m-2">
