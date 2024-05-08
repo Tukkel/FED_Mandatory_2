@@ -1,4 +1,4 @@
-export default interface IModel {
+export interface IModel {
   firstName: string;
   lastName: string;
   email: string;
@@ -16,4 +16,11 @@ export default interface IModel {
   eyeColor: string;
   comments: string;
   password: string;
+}
+
+export interface EfModel {
+  EfModelId: number;
+  firstName: string;
+  lastName: string;
+  email: string;
 }

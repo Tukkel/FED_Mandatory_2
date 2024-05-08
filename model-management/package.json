@@ -54,6 +54,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-window": "^1.8.8",
     "eslint-plugin-react-refresh": "^0.4.6"
   }
 }
