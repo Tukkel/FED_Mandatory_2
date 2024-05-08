@@ -13,7 +13,7 @@ function ManageJobsPage() {
   const handleJobChanged = () => {
     setTimeout(() => {
       setRefreshKey((prevKey) => prevKey + 1);
-    }, 1000);
+    }, 500);
   };
 
   return (

@@ -48,18 +48,18 @@ export default function ChangeJobFormDialog({
 
   return (
     <React.Fragment>
-      <Button 
-  variant="contained" 
-  onClick={handleClickOpen} 
-  sx={{ 
-    backgroundColor: '#4a4a4a', 
-    color: '#fff', 
-    fontSize: '20px', 
-    padding: '10px 20px', 
-    '&:hover': { 
-      backgroundColor: '#3a3a3a' 
-    } 
-  }}>
+      <Button
+        variant="contained"
+        onClick={handleClickOpen}
+        sx={{
+          backgroundColor: "#4a4a4a",
+          color: "#fff",
+          fontSize: "18px",
+          "&:hover": {
+            backgroundColor: "#3a3a3a",
+          },
+        }}
+      >
         {job.customer}
       </Button>
       <Dialog

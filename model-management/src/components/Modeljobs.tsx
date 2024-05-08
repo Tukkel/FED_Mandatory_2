@@ -11,15 +11,18 @@ interface JobProps {
 
 const ModelJobs: React.FC<JobProps> = ({ job }) => {
   return (
-    <Card sx={{backgroundColor: '#d3d3d3' }}>
+    <Card sx={{ backgroundColor: "#d3d3d3" }}>
       <CardContent>
         <h2 className={"text-2xl"}>{job.customer}</h2>
         <p>Start Date: {new Date(job.startDate).toLocaleDateString()}</p>
         <p>Days: {job.days}</p>
         <p>Location: {job.location}</p>
         <p>Comments: {job.comments}</p>
-        <div className="m-2">
-          <ExpensesFormDialog jobId={job.jobId} modelId={Number(localStorage.getItem("modelId"))} />
+        <div className="my-2">
+          <ExpensesFormDialog
+            jobId={job.jobId}
+            modelId={Number(localStorage.getItem("modelId"))}
+          />
         </div>
       </CardContent>
     </Card>
